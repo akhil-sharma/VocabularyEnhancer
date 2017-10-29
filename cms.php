@@ -100,7 +100,7 @@ $conn = new mysqli($host, $username, $password, $db);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } 
-echo "";
+echo "connection made";
 
 $sql = "INSERT INTO `main` (Word, Meaning) VALUES ('$word', '$meaning')";
 
