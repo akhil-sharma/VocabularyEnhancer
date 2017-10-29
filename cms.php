@@ -3,7 +3,7 @@
     if(!isset($_SESSION['username'])){
         header('Location:login.php');
     }
-    if(isset($_POST['submit']))
+    if(isset($_POST['submit'] == "CMS"))
   {
 ?>
 <!DOCTYPE html>
@@ -84,7 +84,7 @@
 </html>
 
 <?php
-  
+  }
 
 if(isset($_POST['word']) and isset($_POST['meaning'])){
   $word=$_POST['word'];
@@ -98,14 +98,9 @@ $conn = new mysqli($host, $username, $password, $db);
 
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);?>
-
-<script>
-    console.log("connection made!");
-</script>
-
-<?php } 
-echo "connection made";
+    die("Connection failed: " . $conn->connect_error);
+} 
+echo "";
 
 $sql = "INSERT INTO `main` (Word, Meaning) VALUES ('$word', '$meaning')";
 
