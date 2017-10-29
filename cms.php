@@ -3,8 +3,6 @@
     if(!isset($_SESSION['username'])){
         header('Location:login.php');
     }
-    if(isset($_POST['submit'] == "CMS"))
-  {
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -84,7 +82,7 @@
 </html>
 
 <?php
-  }
+  
 
 if(isset($_POST['word']) and isset($_POST['meaning'])){
   $word=$_POST['word'];
@@ -112,7 +110,4 @@ if ($conn->query($sql) === TRUE) {
 
 $conn->close();
 }
-?>
-<?php
-  }
 ?>
