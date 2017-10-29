@@ -17,8 +17,15 @@ if (isset($_POST['username']) and isset($_POST['password'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
 //3.1.2 Checking the values are existing in the database or not
-    $query = "SELECT * FROM `user_info` WHERE username='$username' and password='$password'";
-    $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
+    $stmt = $conn->prepare('SELECT * FROM `user_info` WHERE username=? and password=?');
+    $stmt->bind_param('ss', $username, $password);
+    // $stmt->bind_param('s', $password);
+
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    // $query = "SELECT * FROM `user_info` WHERE username='$username' and password='$password'";
+    // $result = mysqli_query($conn, $query) or die(mysqli_error($conn));
     $count = mysqli_num_rows($result);
 //3.1.2 If the posted values are equal to the database values, then session will be created for the user.
     if ($count == 1){
